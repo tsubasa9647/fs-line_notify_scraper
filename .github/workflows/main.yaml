@@ -27,4 +27,4 @@ jobs:
         LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
         URL: ${{ secrets.URL }}
       run: |
-        python fs_scraper/src/main.py
+        python src/fs_scraper/main.py
