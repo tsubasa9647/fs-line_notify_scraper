@@ -2,7 +2,7 @@ name: Run scrape_notify script
 
 on:
   schedule:
-    - cron: '*/10 * * * *'  # 5分毎に実行
+    - cron: '*/5 * * * *'  # 5分毎に実行
 
 jobs:
   build:
