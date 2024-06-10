@@ -11,12 +11,23 @@
 -e file:.
 beautifulsoup4==4.12.3
     # via fs-scraper
+black==24.4.2
 certifi==2024.6.2
     # via requests
 charset-normalizer==3.3.2
     # via requests
+click==8.1.7
+    # via black
 idna==3.7
     # via requests
+mypy-extensions==1.0.0
+    # via black
+packaging==24.1
+    # via black
+pathspec==0.12.1
+    # via black
+platformdirs==4.2.2
+    # via black
 requests==2.32.3
     # via fs-scraper
 ruff==0.4.8
