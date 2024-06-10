@@ -1,0 +1,30 @@
+name: Run scrape_notify script
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'  # 5分毎に実行
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: prod
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests beautifulsoup4
+
+    - name: Run scrape_notify script
+      env:
+        LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
+        URL: ${{ secrets.URL }}
+      run: |
+        python src/fs_scraper/main.py
