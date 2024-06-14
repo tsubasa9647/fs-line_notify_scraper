@@ -1,6 +1,7 @@
 import json
 import logging
 import os
+import sys
 
 import requests
 from bs4 import BeautifulSoup
@@ -97,6 +98,7 @@ def parse_data(content, target_class, condition):
 
     for hotel in hotels:
         message = (
+            f"JTB URL: {url}\n"
             f"Plan Name: {hotel.get('plan_name')}\n"
             f"Room Details: {hotel.get('room_details')}\n"
             f"Image URL: {hotel.get('image_url')}\n"
@@ -139,10 +141,12 @@ def main():
         messages = parse_data(content, None, "空室は現在見つかっていません。")
         if messages:
             send_line_notification(line_notify_token, messages)
+            sys.exit(1)
         else:
             logging.info("No messages to send.")
     else:
         logging.error("Failed to retrieve content.")
+    sys.exit(0)
 
 
 if __name__ == "__main__":
